@@ -19,7 +19,8 @@ Tracker.autorun updateTheme = ->
     $('body').removeClass lastTheme
     $('body').addClass newTheme
     $('#themeLink').remove()
-    $('head').prepend """<link rel="stylesheet" href="/bootstrap/#{newTheme}.min.css" id="themeLink"/>"""
+    url = Meteor.absoluteUrl("/bootstrap/#{newTheme}.min.css")
+    $('head').prepend """<link rel="stylesheet" href="#{url}" id="themeLink"/>"""
     switch newTheme
       when 'light'
         Meteor.Spinner.options.color = '#000'
